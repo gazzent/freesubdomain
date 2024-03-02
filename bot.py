@@ -6,11 +6,11 @@ import random
 import string
 
 # Ganti dengan token bot Telegram Anda
-TELEGRAM_TOKEN = 'TELEGRAM_TOKEN'
+TELEGRAM_TOKEN = '6971373883:AAGSbx7oB74LFNwjg2xoNDtumpCLTir6n6Q'
 
 # Ganti dengan API Key Cloudflare Anda
-CLOUDFLARE_API_KEY = 'CLOUDFLARE_API_KEY'
-CLOUDFLARE_EMAIL = 'CLOUDFLARE_EMAIL'
+CLOUDFLARE_API_KEY = '068c7fa582ad66bb65243a6cd0175f02419c8'
+CLOUDFLARE_EMAIL = 'irawancandra6699@gmail.com'
 
 # Dictionary untuk menyimpan alamat IP server pengguna
 user_ips = {}
@@ -20,7 +20,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.message.chat_id, text="Halo! Saya BOT GunFreeSubdomain😌")
 
     # Pilihan domain
-    reply_keyboard = [['domain1.com', 'domain2.com', 'Cancel']]
+    reply_keyboard = [['vpzx.my.id', 'vpn-mvp.my.id', 'vpnpremium.cfd', 'uzzumaki.cloud', 'Cancel']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True)
     context.bot.send_message(chat_id=user_id, text="Pilih domain:", reply_markup=markup)
 
@@ -39,7 +39,7 @@ def wait_domain(update, context):
     user_id = update.message.from_user.id
     selected_domain = update.message.text.lower()
 
-    if selected_domain not in ['domain1.com', 'domain2.com', 'cancel']:
+    if selected_domain not in ['vpzx.my.id', 'vpn-mvp.my.id', 'vpnpremium.cfd', 'uzzumaki.cloud', 'cancel']:
         context.bot.send_message(chat_id=user_id, text="Pilihan domain tidak valid. Silakan pilih domain yang benar.")
         return 'wait_domain'
     elif selected_domain == 'cancel':
@@ -65,17 +65,21 @@ def wait_ip(update, context):
         return cancel(update, context)
 
     # Membuat string acak untuk subdomain
-    random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
-    subdomain = f"gun{random_string}"
+    random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=4))
+    subdomain = f"code{random_string}"
 
     # Mengelola subdomain di Cloudflare
     cf = CloudFlare(email=CLOUDFLARE_EMAIL, token=CLOUDFLARE_API_KEY)
 
     # Menentukan zone id berdasarkan pilihan domain
-    if user_data['domain'] == 'domain1.com':
-        zone_id = 'ZONE_ID_CLOUDFLARE'
-    elif user_data['domain'] == 'domain2.com':
-        zone_id = 'ZONE_ID_CLOUDFLARE'
+    if user_data['domain'] == 'vpzx.my.id':
+        zone_id = '71f63e965cc206d3c8864cb8af7dd24a'
+    elif user_data['domain'] == 'vpn-mvp.my.id':
+        zone_id = '5a76eec88559b99e0c79761a46726f60'
+    if user_data['domain'] == 'vpnpremium.cfd':
+        zone_id = '6ca43b9cdf91be72e1506733d8402856'
+    elif user_data['domain'] == 'uzzumaki.cloud':
+        zone_id = 'b2c18eef27dac8cf914f2f8bbb558962'
     else:
         context.bot.send_message(chat_id=user_id, text="Terjadi kesalahan. Silakan coba lagi.")
         return cancel(update, context)
