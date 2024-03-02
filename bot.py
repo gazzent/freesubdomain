@@ -93,7 +93,7 @@ def wait_ip(update, context):
     try:
         cf.zones.dns_records.post(zone_id, data=record)
         # Mengirimkan pesan ke pengguna dengan subdomain yang dibuat
-        message = f"Subdomain Berhasil dibuat.\nCreated by @gungrate\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Anda :\n{subdomain}.{user_data['domain']}\n\nThx.\nID Anda : {user_id}\n"
+        message = f"Subdomain Berhasil dibuat.\nCreated by @Candravpnz\n\nDOMAIN : {user_data['domain']}\nIP : {user_data['ip']}\n\nSubdomain Anda :\n{subdomain}.{user_data['domain']}\n\nThx.\nID Anda : {user_id}\n"
         context.bot.send_message(chat_id=user_id, text=message)
     except Exception as e:
         print(f"Error creating DNS record: {e}")
