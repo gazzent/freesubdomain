@@ -6,7 +6,7 @@ import random
 import string
 
 # Ganti dengan token bot Telegram Anda
-TELEGRAM_TOKEN = '6971373883:AAGSbx7oB74LFNwjg2xoNDtumpCLTir6n6Q'
+TELEGRAM_TOKEN = '7387307391:AAGFJuaP_jOgPwGuLfgol-n_iQdWUJHJ6B4'
 
 # Ganti dengan API Key Cloudflare Anda
 CLOUDFLARE_API_KEY = '068c7fa582ad66bb65243a6cd0175f02419c8'
@@ -17,10 +17,10 @@ user_ips = {}
 
 def start(update, context):
     user_id = update.message.from_user.id
-    context.bot.send_message(chat_id=update.message.chat_id, text="Halo! Saya BOT GunFreeSubdomain😌")
+    context.bot.send_message(chat_id=update.message.chat_id, text="🔹Halo! wellcome to my bot add ip subdomain🔹")
 
     # Pilihan domain
-    reply_keyboard = [['vpzx.my.id', 'vpn-mvp.my.id', 'vpnpremium.cfd', 'uzzumaki.cloud', 'Cancel']]
+    reply_keyboard = [['vpzx.my.id', 'xscript.biz.id','Cancel']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True)
     context.bot.send_message(chat_id=user_id, text="Pilih domain:", reply_markup=markup)
 
@@ -39,7 +39,7 @@ def wait_domain(update, context):
     user_id = update.message.from_user.id
     selected_domain = update.message.text.lower()
 
-    if selected_domain not in ['vpzx.my.id', 'vpn-mvp.my.id', 'vpnpremium.cfd', 'uzzumaki.cloud', 'cancel']:
+    if selected_domain not in ['vpzx.my.id', 'xscript.biz.id', 'cancel']:
         context.bot.send_message(chat_id=user_id, text="Pilihan domain tidak valid. Silakan pilih domain yang benar.")
         return 'wait_domain'
     elif selected_domain == 'cancel':
@@ -74,12 +74,8 @@ def wait_ip(update, context):
     # Menentukan zone id berdasarkan pilihan domain
     if user_data['domain'] == 'vpzx.my.id':
         zone_id = '71f63e965cc206d3c8864cb8af7dd24a'
-    elif user_data['domain'] == 'vpn-mvp.my.id':
-        zone_id = '5a76eec88559b99e0c79761a46726f60'
-    if user_data['domain'] == 'vpnpremium.cfd':
-        zone_id = '6ca43b9cdf91be72e1506733d8402856'
-    elif user_data['domain'] == 'uzzumaki.cloud':
-        zone_id = 'b2c18eef27dac8cf914f2f8bbb558962'
+    elif user_data['domain'] == 'xscript.biz.id':
+        zone_id = 'cf0d6902c4b44ed33e30ff78c1a8a3be
     else:
         context.bot.send_message(chat_id=user_id, text="Terjadi kesalahan. Silakan coba lagi.")
         return cancel(update, context)
